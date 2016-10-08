@@ -19,8 +19,10 @@ public class LinkedComposite extends Composite {
         }
     }
     @Override
-    public void remove(Composite comp) {
-        myList.deleteWithValue(comp);
+    public void remove(Composite... comps) {
+        for (Composite comp : comps) {
+            myList.deleteWithValue(comp);
+        }
     }
     @Override
     public LinkedList<Composite> getComponentList() {

@@ -10,7 +10,7 @@ public abstract class Composite {
     public void add(Composite... comps) { /* Do nothing by default */ }
 
     // Removes components
-    public void remove(Composite comp) { /* Do nothing by default */ }
+    public void remove(Composite... comps) { /* Do nothing by default */ }
 
     // Gets components
     public Object getComponentList() { return null; }
