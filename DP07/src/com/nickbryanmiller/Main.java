@@ -27,7 +27,17 @@ public class Main {
 //        Composite ac = new ArrayComposite( new Leaf( "C" ), lc, new Leaf( "D" ) );
 //        ac.objectToString();
 
-        Composite ac = new ArrayComposite( new Leaf( "C" ), new Leaf( "D" ) );
+//        Composite ac = new ArrayComposite( new Leaf( "C" ), new Leaf( "D" ) );
+//        Composite lc = new LinkedComposite( new Leaf( "A" ), ac, new Leaf( "B" ) );
+//        lc.objectToString();
+
+//        Composite ic = new InstanceComposite(new Leaf<String>("A"));
+//        Composite ic2 = new InstanceComposite(ic);
+//        ic2.objectToString();
+
+        Composite ic = new InstanceComposite(new Leaf<String>("A"));
+        Composite ic2 = new InstanceComposite(ic);
+        Composite ac = new ArrayComposite( new Leaf( "C" ), ic2, new Leaf( "D" ) );
         Composite lc = new LinkedComposite( new Leaf( "A" ), ac, new Leaf( "B" ) );
         lc.objectToString();
     }

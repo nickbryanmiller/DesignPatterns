@@ -1,7 +1,5 @@
 package com.nickbryanmiller;
 
-import sun.awt.image.ImageWatched;
-
 public class ArrayComposite extends Composite {
     String value = "ArrayComposite";
     Array<Composite> array;
@@ -54,6 +52,16 @@ public class ArrayComposite extends Composite {
                     }
                     else {
                         System.out.println(lc.getValue());
+                    }
+                }
+                else if (arr[i] instanceof InstanceComposite) {
+                    InstanceComposite ic = ((InstanceComposite) arr[i]);
+                    if (ic.variable != null) {
+                        System.out.println(indents + ic.getValue() + " Containing");
+                        ic.objectToString(ic.variable, indents + "\t");
+                    }
+                    else {
+                        System.out.println(indents + this.getValue());
                     }
                 }
                 else if (arr[i] instanceof Leaf) {
