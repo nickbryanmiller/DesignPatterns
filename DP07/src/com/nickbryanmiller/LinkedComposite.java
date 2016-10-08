@@ -6,18 +6,17 @@ public class LinkedComposite extends Composite {
     String value = "LinkedComposite";
     LinkedList<Composite> myList;
 
-    public LinkedComposite(String v) {
-        this.value = v;
-        myList = new LinkedList<Composite>();
-    }
-    public LinkedComposite() {
+    public LinkedComposite(Composite... comps) {
         this.value = "LinkedComposite";
         myList = new LinkedList<Composite>();
+        add(comps);
     }
 
     @Override
-    public void add(Composite comp) {
-        myList.addNode(comp);
+    public void add(Composite... comps) {
+        for (Composite comp : comps) {
+            myList.addNode(comp);
+        }
     }
     @Override
     public void remove(Composite comp) {

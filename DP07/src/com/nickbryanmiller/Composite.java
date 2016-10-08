@@ -7,7 +7,7 @@ package com.nickbryanmiller;
 
 public abstract class Composite {
     // Adds components
-    public void add(Composite comp) { /* Do nothing by default */ }
+    public void add(Composite... comps) { /* Do nothing by default */ }
 
     // Removes components
     public void remove(Composite comp) { /* Do nothing by default */ }
