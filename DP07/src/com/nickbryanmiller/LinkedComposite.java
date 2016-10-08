@@ -46,6 +46,11 @@ public class LinkedComposite extends Composite {
                 System.out.println(indents + lc.value + " Containing");
                 objectToString(lc.myList.getHead(), lc.myList, indents + "\t");
             }
+            else if (head.value instanceof ArrayComposite) {
+                ArrayComposite ac = ((ArrayComposite) head.value);
+                System.out.println(indents + ac.value + " Containing");
+                ac.objectToString(ac.array, indents + "\t");
+            }
             else if (head.value instanceof Leaf) {
                 Leaf leaf = ((Leaf) head.value);
                 System.out.println(indents + "Leaf " + leaf.value);
