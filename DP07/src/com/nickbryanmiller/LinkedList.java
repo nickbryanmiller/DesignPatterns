@@ -1,16 +1,21 @@
 package com.nickbryanmiller;
 
+// This is a template LinkedList class that uses node containers (filled with Composite objects in this case)
+// To create a linked chain of dynamic size
+
 public class LinkedList<T> {
     Node<T> head;
     Node<T> tail;
     int size;
 
+    // Constructor that sets the head and tail to null
     public LinkedList() {
         head = null;
         tail = null;
         size = 0;
     }
 
+    // Adds by appending the tail so we can work in O(1)
     public void addNode(T val) {
         if (head == null) {
             head = new Node<T>(val, null);
@@ -25,6 +30,7 @@ public class LinkedList<T> {
         }
     }
 
+    // Traverses the LinkedList and removes the desired node
     public void deleteWithValue(T val) {
         if (head == null) {
             return;
@@ -53,6 +59,7 @@ public class LinkedList<T> {
         }
     }
 
+    // Traverses the LinkedList and removes the node at the desired position
     public void deleteAtPosition(int position) {
         if ((position < 0) || (position > size)) {
             return;
@@ -75,6 +82,7 @@ public class LinkedList<T> {
         }
     }
 
+    // Gets the node at a desired position
     public T getAtPosition(int position) {
         if ((position < 0) || (position > size)) {
             return null;
@@ -88,14 +96,17 @@ public class LinkedList<T> {
         }
     }
 
+    // Gets the size of the LinkedList
     public int getSize() {
         return size;
     }
 
+    // Grabs the head of the LinkedList
     public Node<T> getHead() {
         return head;
     }
 
+    // Just a basic print method for testing when initially making the LinkedList
     public void printList() {
         Node<T> p = head;
         while (p != null) {

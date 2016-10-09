@@ -5,6 +5,8 @@ package com.nickbryanmiller;
 //       able to pass a leaf as a composite as well and they should not
 //       have some implementations that the composites have
 
+// Both our leaf and composite classes need these so that we can work with just one type
+
 public abstract class Composite {
     // Adds components
     public void add(Composite... comps) { /* Do nothing by default */ }

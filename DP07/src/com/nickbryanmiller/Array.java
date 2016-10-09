@@ -2,6 +2,9 @@ package com.nickbryanmiller;
 
 import java.util.ArrayList;
 
+// This is my own Array that has an ArrayList as its backbone
+// It is dynamically resizing and returns the exact array size you need
+
 public class Array<T> {
 
     private ArrayList<T> array;
