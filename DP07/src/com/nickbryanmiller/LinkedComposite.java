@@ -42,7 +42,7 @@ public class LinkedComposite extends Composite {
             if (head.value instanceof LinkedComposite) {
                 LinkedComposite lc = ((LinkedComposite) head.value);
                 System.out.println(indents + lc.value + " Containing");
-                objectToString(lc.myList.getHead(), lc.myList, indents + "\t");
+                lc.objectToString(lc.myList.getHead(), lc.myList, indents + "\t");
             }
             else if (head.value instanceof ArrayComposite) {
                 ArrayComposite ac = ((ArrayComposite) head.value);
@@ -58,6 +58,11 @@ public class LinkedComposite extends Composite {
                 else {
                     System.out.println(indents + this.getValue());
                 }
+            }
+            else if (head.value instanceof StaticArrayComposite) {
+                StaticArrayComposite sac = ((StaticArrayComposite) head.value);
+                System.out.println(indents + sac.value + " Containing");
+                sac.objectToString(sac.array, indents + "\t");
             }
             else if (head.value instanceof Leaf) {
                 Leaf leaf = ((Leaf) head.value);

@@ -26,23 +26,22 @@ public class ArrayComposite extends Composite {
     }
     @Override
     public void objectToString() {
-        if (array.getSize() > 1) {
+        if (array.getSize() >= 1) {
             System.out.println(this.getValue() + " Containing");
             objectToString(array, "\t");
         }
         else {
             System.out.println(this.getValue());
         }
-
     }
     public void objectToString(Array<Composite> dynArray, String indents) {
-        if (array.getSize() > 1) {
+        if (array.getSize() >= 1) {
             Composite[] arr = dynArray.getArray();
             for (int i = 0; i < arr.length; i++) {
                 if (arr[i] instanceof ArrayComposite) {
                     ArrayComposite ac = ((ArrayComposite) arr[i]);
                     System.out.println(indents + ac.value + " Containing");
-                    objectToString(ac.array, indents + "\t");
+                    ac.objectToString(ac.array, indents + "\t");
                 }
                 else if (arr[i] instanceof LinkedComposite) {
                     LinkedComposite lc = ((LinkedComposite) arr[i]);
@@ -63,6 +62,11 @@ public class ArrayComposite extends Composite {
                     else {
                         System.out.println(indents + this.getValue());
                     }
+                }
+                else if (arr[i] instanceof StaticArrayComposite) {
+                    StaticArrayComposite sac = ((StaticArrayComposite) arr[i]);
+                    System.out.println(indents + sac.value + " Containing");
+                    sac.objectToString(sac.array, indents + "\t");
                 }
                 else if (arr[i] instanceof Leaf) {
                     Leaf leaf = ((Leaf) arr[i]);

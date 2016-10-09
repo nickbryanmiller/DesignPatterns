@@ -35,9 +35,10 @@ public class Array<T> {
     public void removeAll(T key) {
         for (int i = 0; i < array.size(); i++) {
             int index = array.indexOf(key);
-            if (index < 0) {
+            if (index >= 0) {
                 array.remove(index);
             }
+            i = i - 1;
         }
     }
 

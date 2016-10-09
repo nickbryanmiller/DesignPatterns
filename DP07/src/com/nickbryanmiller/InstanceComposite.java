@@ -60,11 +60,16 @@ public class InstanceComposite extends Composite {
                 InstanceComposite ic = ((InstanceComposite) var);
                 if (ic.variable != null) {
                     System.out.println(indents + this.getValue() + " Containing");
-                    objectToString(ic.variable, indents + "\t");
+                    ic.objectToString(ic.variable, indents + "\t");
                 }
                 else {
                     System.out.println(indents + this.getValue());
                 }
+            }
+            else if (var instanceof StaticArrayComposite) {
+                StaticArrayComposite sac = ((StaticArrayComposite) var);
+                System.out.println(indents + sac.value + " Containing");
+                sac.objectToString(sac.array, indents + "\t");
             }
             else if (var instanceof Leaf) {
                 Leaf leaf = ((Leaf) var);
