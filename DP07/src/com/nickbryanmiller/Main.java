@@ -58,6 +58,8 @@ public class Main {
         Composite ac1 = new ArrayComposite( new Leaf( "E" ), leaf1, new Leaf( "F" ) );
         Composite sac1 = new StaticArrayComposite( 3, new Leaf<String>("G"), new Leaf<String>("H") );
         Composite lc2 = new LinkedComposite( lc1, ac1, sac1);
+//        ac1.remove(leaf1);
         lc2.objectToString();
+
     }
 }
