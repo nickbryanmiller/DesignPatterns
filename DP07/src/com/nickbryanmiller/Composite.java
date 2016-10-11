@@ -8,11 +8,45 @@ package com.nickbryanmiller;
 // Both our leaf and composite classes need these so that we can work with just one type
 
 public abstract class Composite {
+
+    // Sets the parent
+    private Composite parent = null;
+
+    // Is a method that adds and sets the parent
+    public final void addTM(Composite... comps) {
+        try {
+            add(comps);
+
+            // Set the parent
+            for (int i = 0; i < comps.length; i++) {
+                comps[i].parent = this;
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e.getLocalizedMessage());
+        }
+    }
+
+    public final void removeTM(Composite... comps) {
+        try {
+            remove(comps);
+
+            // Set the parent
+            for (int i = 0; i < comps.length; i++) {
+                comps[i].parent = null;
+            }
+        }
+        catch (Exception e) {
+            System.out.println(e.getLocalizedMessage());
+        }
+    }
+
+    // ------------------------ The methods the TM's calls ----------------------- //
     // Adds components
-    public void add(Composite... comps) { /* Do nothing by default */ }
+    protected void add(Composite... comps) { /* Do nothing by default */ }
 
     // Removes components
-    public void remove(Composite... comps) { /* Do nothing by default */ }
+    protected void remove(Composite... comps) { /* Do nothing by default */ }
 
     // Gets components
     public Object getComponentList() { return null; }
@@ -22,4 +56,6 @@ public abstract class Composite {
 
     // Gives the value the class or object holds
     public Object getValue() { return null; }
+
+    protected Composite getParent() { return parent; }
 }

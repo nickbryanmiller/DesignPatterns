@@ -10,7 +10,7 @@ public class Main {
         Composite lc = new LinkedComposite( new Leaf<String>( "A" ), new Leaf<String>( "B" ) );
         Composite ac = new LinkedComposite( new Leaf<String>( "C" ), lc, new Leaf<String>( "D" ) );
         ac.objectToString();
-        ac.remove(lc);
+        ac.removeTM(lc);
         ac.objectToString();
         */
 
@@ -20,7 +20,7 @@ public class Main {
         Composite lc = new ArrayComposite( new Leaf<String>( "A" ), new Leaf<String>( "B" ) );
         Composite ac = new ArrayComposite( leaf, lc, leaf2 );
         ac.objectToString();
-        ac.remove(leaf2, lc);
+        ac.removeTM(leaf2, lc);
         ac.objectToString();
         */
 
@@ -56,20 +56,34 @@ public class Main {
         Composite lc = new StaticArrayComposite(2, new Leaf<String>( "A" ), new Leaf<String>( "B" ) );
         Composite ac = new StaticArrayComposite( 4, leaf, lc, leaf2 );
         ac.objectToString();
-        ac.remove(leaf2, lc);
-        ac.add(new Leaf<String>( "G" ));
+        ac.removeTM(leaf2, lc);
+        ac.addTM(new Leaf<String>( "G" ));
         ac.objectToString();
         */
 
         // Just a generic test with all of them working together
-        Composite leaf1 = new Leaf<String>("A");
-        Composite ic1 = new InstanceComposite(new Leaf<String>("B"));
-        Composite lc1 = new LinkedComposite( new Leaf<String>( "C" ), ic1, new Leaf<String>( "D" ) );
-        Composite ac1 = new ArrayComposite( new Leaf( "E" ), leaf1, new Leaf( "F" ) );
-        Composite sac1 = new StaticArrayComposite( 3, new Leaf<String>("G"), new Leaf<String>("H") );
-        Composite lc2 = new LinkedComposite( lc1, ac1, sac1);
-        // ac1.remove(leaf1); // to test you can remove anywhere
-        lc2.objectToString();
+//        Composite leaf1 = new Leaf<String>("A");
+//        Composite ic1 = new InstanceComposite(new Leaf<String>("B"));
+//        Composite lc1 = new LinkedComposite( new Leaf<String>( "C" ), ic1, new Leaf<String>( "D" ) );
+//        Composite ac1 = new ArrayComposite( new Leaf( "E" ), leaf1, new Leaf( "F" ) );
+//        Composite sac1 = new StaticArrayComposite( 3, new Leaf<String>("G"), new Leaf<String>("H") );
+//        Composite lc2 = new LinkedComposite( lc1, ac1, sac1);
+//        // ac1.removeTM(leaf1); // to test you can remove anywhere
+//        lc2.objectToString();
+
+        // Test the new template methods
+//        Composite leaf1 = new Leaf<String>( "A" );
+//        Composite lc = new LinkedComposite();
+//        lc.addTM(leaf1, new Leaf<String>( "B" ));
+//        lc.objectToString();
+//        System.out.println(lc);
+//        System.out.println(leaf1);
+//        System.out.println(leaf1.getParent());
+//        lc.removeTM(leaf1);
+//        lc.objectToString();
+//        System.out.println(lc);
+//        System.out.println(leaf1);
+//        System.out.println(leaf1.getParent());
 
     }
 }
