@@ -10,7 +10,7 @@ public class InstanceComposite extends Composite {
     public InstanceComposite(Composite... comps) {
         this.value = "InstanceComposite";
         variable = null;
-        add(comps);
+        addTM(comps);
     }
 
     // Uses varargs but only takes the first one to set to the instance variable
@@ -35,59 +35,6 @@ public class InstanceComposite extends Composite {
     @Override
     public Composite getComponentList() {
         return this.variable;
-    }
-
-    // Utility function that uses the below recursive function to print out the tree structure
-    @Override
-    public void objectToString() {
-        if (this.variable != null) {
-            System.out.println(this.getValue() + " Containing");
-            objectToString(variable, "\t");
-        }
-        else {
-            System.out.println(this.getValue());
-        }
-
-    }
-
-    // Goes through the entire tree and calls the appropriate string method after downcasting the composite
-    public void objectToString(Composite var, String indents) {
-        if (var != null) {
-            if (var instanceof ArrayComposite) {
-                ArrayComposite ac = ((ArrayComposite) var);
-                System.out.println(indents + ac.value + " Containing");
-                ac.objectToString(ac.array, indents + "\t");
-            }
-            else if (var instanceof LinkedComposite) {
-                LinkedComposite lc = ((LinkedComposite) var);
-                if (lc.myList.getHead() != null) {
-                    System.out.println(indents + lc.getValue() + " Containing");
-                    lc.objectToString(lc.myList.getHead(), lc.myList, indents + "\t");
-                }
-                else {
-                    System.out.println(lc.getValue());
-                }
-            }
-            else if (var instanceof InstanceComposite) {
-                InstanceComposite ic = ((InstanceComposite) var);
-                if (ic.variable != null) {
-                    System.out.println(indents + this.getValue() + " Containing");
-                    ic.objectToString(ic.variable, indents + "\t");
-                }
-                else {
-                    System.out.println(indents + this.getValue());
-                }
-            }
-            else if (var instanceof StaticArrayComposite) {
-                StaticArrayComposite sac = ((StaticArrayComposite) var);
-                System.out.println(indents + sac.value + " Containing");
-                sac.objectToString(sac.array, indents + "\t");
-            }
-            else if (var instanceof Leaf) {
-                Leaf leaf = ((Leaf) var);
-                System.out.println(indents + "Leaf " + leaf.value);
-            }
-        }
     }
 
     // Grabs the name of this object
