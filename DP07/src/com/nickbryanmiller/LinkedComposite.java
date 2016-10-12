@@ -2,8 +2,6 @@ package com.nickbryanmiller;
 
 // This is a ConcreteComposite that uses a LinkedList as its composite list
 
-import java.util.Iterator;
-
 public class LinkedComposite extends Composite {
     String value = "LinkedComposite";
     LinkedList<Composite> myList;

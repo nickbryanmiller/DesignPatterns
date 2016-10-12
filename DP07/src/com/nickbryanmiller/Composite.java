@@ -7,19 +7,15 @@ package com.nickbryanmiller;
 
 // Both our leaf and composite classes need these so that we can work with just one type
 
-import java.util.Iterator;
-
-public abstract class Composite implements Iterable<Composite> {
-
+public abstract class Composite {
     // Sets the parent
     private Composite parent = null;
-    Iterator<Composite> it = null;
+    MyIterator<Composite> it = null;
 
     // Is a method that adds and sets the parent
     public final void addTM(Composite... comps) {
         try {
             add(comps);
-
             // Set the parent
             for (int i = 0; i < comps.length; i++) {
                 comps[i].parent = this;
@@ -33,7 +29,6 @@ public abstract class Composite implements Iterable<Composite> {
     public final void removeTM(Composite... comps) {
         try {
             remove(comps);
-
             // Set the parent
             for (int i = 0; i < comps.length; i++) {
                 comps[i].parent = null;
@@ -55,8 +50,6 @@ public abstract class Composite implements Iterable<Composite> {
     public Object getComponentList() { return null; }
 
     // Prints out information specific to the Leaf or Composite
-//    public void objectToString() { /* Do nothing by default */ }
-
     final public String objectToString() {
         String val = this.getStringValue();
         val = val + doToStringFunction("\t");
@@ -87,13 +80,9 @@ public abstract class Composite implements Iterable<Composite> {
     protected Composite getParent() { return parent; }
 
     // Get the iterator
-    final public Iterator<Composite> makeIterator() {
-        it = iterator();
+    final public MyIterator<Composite> makeIterator() {
+        it = new CompositeIterator(this);
         return it;
     }
-    // override the type of iterator to this type
-    @Override
-    public Iterator<Composite> iterator() {
-        return new CompositeIterator(this);
-    }
+
 }

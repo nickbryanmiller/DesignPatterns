@@ -2,7 +2,7 @@ package com.nickbryanmiller;
 
 import java.util.Iterator;
 
-public class CompositeIterator implements Iterator<Composite> {
+public class CompositeIterator implements MyIterator<Composite> {
 
     private Composite comp;
     private int position = 0;
@@ -109,6 +109,6 @@ public class CompositeIterator implements Iterator<Composite> {
 
     @Override
     public void remove() {
-        // we don't support that
+        // we don't need to support that
     }
 }
