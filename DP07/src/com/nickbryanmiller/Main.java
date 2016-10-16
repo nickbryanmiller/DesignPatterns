@@ -46,18 +46,27 @@ public class Main {
         System.out.println(leaf2.getParent());
         */
 
-        // Just a generic test with all of them working together except staticArray
+        // Test that we can reset the position of the iterator with the node position
         /*
-        Composite leaf1 = new Leaf<String>("A");
-        Composite ic1 = new InstanceComposite(new Leaf<String>("B"));
-        Composite lc1 = new LinkedComposite( new Leaf<String>( "C" ), ic1, new Leaf<String>( "D" ) );
-        Composite ac1 = new ArrayComposite( new Leaf( "E" ), leaf1, new Leaf( "F" ) );
-        Composite lc2 = new LinkedComposite( lc1, ac1);
-        ac1.removeTM(leaf1); // to test you can remove anywhere
-        System.out.println(lc2.objectToString());
+        Composite leaf1 = new Leaf<String>( "A" );
+        Composite leaf2 = new Leaf<String>( "B" );
+        Composite leaf3 = new Leaf<String>( "C" );
+        Composite leaf4 = new Leaf<String>( "D" );
+        Composite lc1 = new LinkedComposite();
+        lc1.addTM(leaf1, leaf2, leaf3, leaf4);
+        */
+
+        // Test Dave's way of working with the iterator
+        /*
+        MyIterator<Composite> it = lc1.makeIterator();
+        for(it.first(); it.isValid(); it.next()) {
+            Composite comp = it.getCurrent();
+            System.out.println(comp.getValue());
+        }
         */
 
         // Generic test case with all the concrete composites working together
+
         Composite leaf1 = new Leaf<String>("A");
         Composite ic1 = new InstanceComposite(new Leaf<String>("B"));
         Composite lc1 = new LinkedComposite( new Leaf<String>( "C" ), ic1, new Leaf<String>( "D" ) );
@@ -66,6 +75,7 @@ public class Main {
         Composite lc2 = new LinkedComposite( lc1, sac1, ac1);
         // ac1.removeTM(leaf1); // to test you can remove anywhere
         System.out.println(lc2.objectToString());
+
 
     }
 }

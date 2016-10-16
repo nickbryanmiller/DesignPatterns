@@ -6,17 +6,26 @@ public class CompositeIterator implements MyIterator<Composite> {
 
     private Composite comp;
     private int position = 0;
+    private Node<Composite> head = null;
+    private Node<Composite> node = null;
+
 
     public CompositeIterator(Composite compBase) {
         this.comp = compBase;
-    }
-
-    @Override
-    public boolean hasNext() {
         if (comp instanceof LinkedComposite) {
             LinkedComposite lc = ((LinkedComposite) comp);
             LinkedList<Composite> children = lc.getComponentList();
-            if (position < children.getSize()) {
+            head = children.getHead();
+            node = head;
+        }
+    }
+
+    @Override
+    public boolean isValid() {
+        if (comp instanceof LinkedComposite) {
+            LinkedComposite lc = ((LinkedComposite) comp);
+            LinkedList<Composite> children = lc.getComponentList();
+            if (node != null) {
                 return true;
             }
             else {
@@ -61,26 +70,23 @@ public class CompositeIterator implements MyIterator<Composite> {
     }
 
     @Override
-    public Composite next() {
+    public Composite getCurrent() {
         if (comp instanceof LinkedComposite) {
             LinkedComposite lc = ((LinkedComposite) comp);
             LinkedList<Composite> children = lc.getComponentList();
-            Composite val = children.getAtPosition(position);
-            position = position + 1;
+            Composite val = node.getValue();
             return val;
         }
         else if (comp instanceof ArrayComposite) {
             ArrayComposite ac = ((ArrayComposite) comp);
             Array<Composite> children = ac.getComponentList();
             Composite val = children.get(position);
-            position = position + 1;
             return val;
         }
         else if (comp instanceof InstanceComposite) {
             InstanceComposite ic = ((InstanceComposite) comp);
             Composite child = ic.getComponentList();
             if (child != null && position == 0) {
-                position = position + 1;
                 return child;
             }
             else {
@@ -92,7 +98,6 @@ public class CompositeIterator implements MyIterator<Composite> {
             Composite[] children = sac.getComponentList();
             if (position < children.length) {
                 Composite val = children[position];
-                position = position + 1;
                 return val;
             }
             else {
@@ -108,7 +113,16 @@ public class CompositeIterator implements MyIterator<Composite> {
     }
 
     @Override
-    public void remove() {
-        // we don't need to support that
+    public void first() {
+        position = 0;
+        node = head;
+    }
+
+    @Override
+    public void next() {
+        position = position + 1;
+        if (comp instanceof LinkedComposite) {
+            node = node.next;
+        }
     }
 }

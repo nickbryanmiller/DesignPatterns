@@ -59,10 +59,11 @@ public abstract class Composite {
     private String doToStringFunction(String indents) {
         String val = "";
         makeIterator();
-        while (it.hasNext()) {
-            Composite comp = it.next();
+        while (it.isValid()) {
+            Composite comp = it.getCurrent();
             val = val + indents + comp.getStringValue();
             val = val + comp.doToStringFunction(indents + "\t");
+            it.next();
         }
         return val;
     }
