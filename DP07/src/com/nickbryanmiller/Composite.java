@@ -55,7 +55,6 @@ public abstract class Composite {
         val = val + doToStringFunction("\t");
         return val;
     }
-
     private String doToStringFunction(String indents) {
         String val = "";
         makeIterator();
@@ -63,6 +62,23 @@ public abstract class Composite {
             Composite comp = it.getCurrent();
             val = val + indents + comp.getStringValue();
             val = val + comp.doToStringFunction(indents + "\t");
+            it.next();
+        }
+        return val;
+    }
+
+    final public String objectToStringPreorder() {
+        String val = doToStringFunctionPreorder("\t");
+        val = val + this.getStringValue();
+        return val;
+    }
+    private String doToStringFunctionPreorder(String indents) {
+        String val = "";
+        makeIterator();
+        while (it.isValid()) {
+            Composite comp = it.getCurrent();
+            val = val + comp.doToStringFunctionPreorder(indents + "\t");
+            val = val + indents + comp.getStringValue();
             it.next();
         }
         return val;

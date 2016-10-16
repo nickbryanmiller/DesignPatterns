@@ -75,6 +75,8 @@ public class Main {
         Composite lc2 = new LinkedComposite( lc1, sac1, ac1);
         // ac1.removeTM(leaf1); // to test you can remove anywhere
         System.out.println(lc2.objectToString());
+        System.out.println("\n");
+        System.out.println(lc2.objectToStringPreorder());
 
 
     }
