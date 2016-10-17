@@ -74,9 +74,12 @@ public class Main {
         Composite sac1 = new StaticArrayComposite( 3, new Leaf<String>("G"), new Leaf<String>("H"));
         Composite lc2 = new LinkedComposite( lc1, sac1, ac1);
         // ac1.removeTM(leaf1); // to test you can remove anywhere
+        /*
         System.out.println(lc2.objectToString());
         System.out.print("---------------------------------------------------\n\n");
-        System.out.println(lc2.objectToStringPreorder());
+        System.out.println(lc2.objectToStringReverse());
+        */
+
 
 
     }

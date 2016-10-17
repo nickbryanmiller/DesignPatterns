@@ -1,6 +1,6 @@
 package com.nickbryanmiller;
 
-import java.util.Iterator;
+import java.util.Stack;
 
 public class CompositeIterator implements MyIterator<Composite> {
 
@@ -9,6 +9,7 @@ public class CompositeIterator implements MyIterator<Composite> {
     private Node<Composite> head = null;
     private Node<Composite> node = null;
 
+    Stack<MyIterator<Composite>> _iterators = new Stack<MyIterator<Composite>>();
 
     public CompositeIterator(Composite compBase) {
         this.comp = compBase;
@@ -123,6 +124,21 @@ public class CompositeIterator implements MyIterator<Composite> {
         position = position + 1;
         if (comp instanceof LinkedComposite) {
             node = node.next;
+        }
+    }
+
+    // GOF method to do preorder traversal
+    final public void nextForPreorderGOF() {
+        String val = "";
+
+        MyIterator<Composite> i = _iterators.peek().getCurrent().makeIterator();
+        i.first();
+        _iterators.push(i);
+
+        while (_iterators.size() > 0 && !_iterators.peek().isValid()) {
+            _iterators.pop();
+            System.out.println(_iterators.peek().getCurrent().getValue());
+            _iterators.peek().next();
         }
     }
 }

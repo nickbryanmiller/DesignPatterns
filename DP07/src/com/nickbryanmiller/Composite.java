@@ -67,17 +67,17 @@ public abstract class Composite {
         return val;
     }
 
-    final public String objectToStringPreorder() {
-        String val = doToStringFunctionPreorder("\t");
+    final public String objectToStringReverse() {
+        String val = doToStringFunctionReverse("\t");
         val = val + this.getStringValue();
         return val;
     }
-    private String doToStringFunctionPreorder(String indents) {
+    private String doToStringFunctionReverse(String indents) {
         String val = "";
         makeIterator();
         while (it.isValid()) {
             Composite comp = it.getCurrent();
-            val = val + comp.doToStringFunctionPreorder(indents + "\t");
+            val = val + comp.doToStringFunctionReverse(indents + "\t");
             val = val + indents + comp.getStringValue();
             it.next();
         }
