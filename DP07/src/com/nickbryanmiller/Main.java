@@ -67,12 +67,12 @@ public class Main {
 
         // Generic test case with all the concrete composites working together
 
-        Composite leaf1 = new Leaf<String>("A");
-        Composite ic1 = new InstanceComposite(new Leaf<String>("B"));
-        Composite lc1 = new LinkedComposite( new Leaf<String>( "C" ), ic1, new Leaf<String>( "D" ) );
-        Composite ac1 = new ArrayComposite( new Leaf( "E" ), leaf1, new Leaf( "F" ) );
-        Composite sac1 = new StaticArrayComposite( 3, new Leaf<String>("G"), new Leaf<String>("H"));
-        Composite lc2 = new LinkedComposite( lc1, sac1, ac1);
+//        Composite leaf1 = new Leaf<String>("A");
+//        Composite ic1 = new InstanceComposite(new Leaf<String>("B"));
+//        Composite lc1 = new LinkedComposite( new Leaf<String>( "C" ), ic1, new Leaf<String>( "D" ) );
+//        Composite ac1 = new ArrayComposite( new Leaf( "E" ), leaf1, new Leaf( "F" ) );
+//        Composite sac1 = new StaticArrayComposite( 3, new Leaf<String>("G"), new Leaf<String>("H"));
+//        Composite lc2 = new LinkedComposite( lc1, sac1, ac1);
         // ac1.removeTM(leaf1); // to test you can remove anywhere
         /*
         System.out.println(lc2.objectToString());
@@ -80,7 +80,11 @@ public class Main {
         System.out.println(lc2.objectToStringReverse());
         */
 
-
+//        MyIterator<Composite> it = lc2.makeIterator();
+//        for(it.first(); it.isValid(); it.nextForPreorderGOF()) {
+//            Composite comp = it.getCurrent();
+//            System.out.println(comp.getValue());
+//        }
 
     }
 }

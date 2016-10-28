@@ -5,4 +5,5 @@ public interface MyIterator<T> {
     public T getCurrent();
     public void next();
     public void first();
+    public void nextForPreorderGOF();
 }

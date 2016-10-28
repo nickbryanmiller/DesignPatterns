@@ -127,10 +127,9 @@ public class CompositeIterator implements MyIterator<Composite> {
         }
     }
 
-    // GOF method to do preorder traversal
+    // GOF method to do preorder traversal. Needs to be fixed
+    @Override
     final public void nextForPreorderGOF() {
-        String val = "";
-
         MyIterator<Composite> i = _iterators.peek().getCurrent().makeIterator();
         i.first();
         _iterators.push(i);
@@ -139,6 +138,7 @@ public class CompositeIterator implements MyIterator<Composite> {
             _iterators.pop();
             System.out.println(_iterators.peek().getCurrent().getValue());
             _iterators.peek().next();
+            _iterators.peek().nextForPreorderGOF();
         }
     }
 }
