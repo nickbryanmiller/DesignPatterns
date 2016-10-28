@@ -7,8 +7,8 @@ public class DivisionComponent extends AbstractComponent {
     }
 
     @Override
-    public float doEvaluate() {
-        float val = this.getChildren().get(0).evaluate();
+    public double doEvaluate() {
+        double val = this.getChildren().get(0).evaluate();
         for(int i = 1; i < this.getChildren().size(); i++){
             val = val / this.getChildren().get(i).evaluate();
         }

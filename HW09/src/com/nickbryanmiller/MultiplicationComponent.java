@@ -7,10 +7,10 @@ public class MultiplicationComponent extends AbstractComponent {
     }
 
     @Override
-    public float doEvaluate() {
-        float val = 1;
-        for(AbstractComponent child : this.getChildren()){
-            val = val * child.evaluate();
+    public double doEvaluate() {
+        double val = 1;
+        for(AbstractComponent comp : this.getChildren()){
+            val = val * comp.evaluate();
         }
         return val;
     }

@@ -56,20 +56,18 @@ public abstract class AbstractComponent {
     protected AbstractComponent getParent() { return parent; }
 
     // Evaluates the tree by Template Method
-    public final float evaluate(){
+    public final double evaluate(){
         // Do anything else you want
         return doEvaluate();
     }
 
-    /*
-    // Accept function for visitor to visit the AbstractComponents
-    public void acceptVisitor(ArithmeticVisitor visitor){
+    // Dave's accept function so we can visit our components
+    public void acceptVisitor(InterfaceVisitor visitor){
         visitor.visit(this);
     }
-    */
 
     // Abstract methods for getting string representation and the evaluation
     public abstract String toString();
-    public abstract float doEvaluate();
+    public abstract double doEvaluate();
 
 }

@@ -7,8 +7,8 @@ public class SubtractionComponent extends AbstractComponent {
     }
 
     @Override
-    public float doEvaluate() {
-        float val;
+    public double doEvaluate() {
+        double val = 0;
 
         // If you just want to subtract one number because it is our only child
         if(this.getChildren().size() == 1){

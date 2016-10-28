@@ -1,20 +1,22 @@
 package com.nickbryanmiller;
 
+import java.util.DoubleSummaryStatistics;
+
 public class LeafComponent extends AbstractComponent {
 
-    private float val;
+    private double val;
 
     public LeafComponent(float v) {
         this.val = v;
     }
 
     @Override
-    public float doEvaluate() {
+    public double doEvaluate() {
         return val;
     }
 
     @Override
     public String toString() {
-        return Float.toString(val);
+        return Double.toString(val);
     }
 }

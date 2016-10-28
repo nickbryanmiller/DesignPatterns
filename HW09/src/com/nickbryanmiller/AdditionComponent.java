@@ -7,10 +7,10 @@ public class AdditionComponent extends AbstractComponent {
     }
 
     @Override
-    public float doEvaluate() {
-        float val = 0;
-        for(AbstractComponent child : this.getChildren()){
-            val = val + child.evaluate();
+    public double doEvaluate() {
+        double val = 0;
+        for(AbstractComponent comp : this.getChildren()){
+            val = val + comp.evaluate();
         }
         return val;
     }
